@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DataBindingTask</string>
+    <string name="title_sk">Syarat dan Ketentuan</string>
+    <string name="tidak_centang">Anda harus menyutujui  dengan menekan checklist pada checkbox saya setuju</string>
+    <string name="syarat_ketentuan"> Dengan mengunduh, memasang, dan/atau menggunakan Aplikasi ini
+        , Anda setuju bahwa Anda telah membaca, memahami dan menerima dan menyetujui Ketentuan Penggunaan ini
+        ("Ketentuan Penggunaan"). Ketentuan Penggunaan ini merupakan suatu perjanjian sah antara Anda dan
+        Perusahaan terkait dan Layanan dan Aplikasi (sebagaimana didefinisikan di bawah ini) berlaku pada kunjungan
+        dan penggunaan Anda pada situs web kami di www.ritelo.id ("Situs web").
+        Silahkan membatalkan akun Anda (jika Anda telah mendaftar untuk Aplikasi) dan secara permanen menghapus aplikasi dari perangkat Anda jika Anda tidak setuju atau tidak ingin masuk ke dalam Ketentuan Penggunaan. </string>
+
+</resources>

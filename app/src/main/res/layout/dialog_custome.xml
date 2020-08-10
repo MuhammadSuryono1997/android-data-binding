@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingStart="40dp"
+    android:paddingEnd="40dp"
+    android:paddingTop="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_splash">
+
+    <TextView
+        android:id="@+id/text_syarat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="25sp"
+        android:lineHeight="30sp"
+        android:justificationMode="inter_word"
+        android:fontFamily="@font/archivo_narrow"
+        android:text="@string/syarat_ketentuan"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="5dp" />
+
+    <CheckBox
+        android:id="@+id/checkbox_setuju"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_syarat"
+        android:layout_marginTop="20dp"
+        android:text="Saya Setuju"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_selanjutnya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="SELANJUTNYA"
+        android:layout_marginBottom="30dp"
+        android:textColor="#fff"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/checkbox_setuju"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
