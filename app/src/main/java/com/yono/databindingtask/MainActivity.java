@@ -72,4 +72,10 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+    public void NumberTwo(View view) {
+    }
+
+    public void NumberOne(View view) {
+    }
 }

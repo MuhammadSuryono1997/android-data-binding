@@ -4,16 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_home"
+    android:paddingStart="40dp"
+    android:paddingEnd="40dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/hahaha"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_satu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        android:text="number one"
+        android:textColor="@android:color/white"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:onClick="NumberOne"
+        tools:ignore="MissingConstraints,OnClick" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="NumberTwo"
+        android:text="number two"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.637"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_satu"
+        app:layout_constraintVertical_bias="0.109"
+        tools:ignore="MissingConstraints,OnClick" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
