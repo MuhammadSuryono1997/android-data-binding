@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
     CheckBox chk_setuju;
     Button btn_selanjuynya;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences(SplashScreen.my_shared_preferences, Context.MODE_PRIVATE);
 
         if (!SplashScreen.syarat){
             ShowSyarat();
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
     private void ShowSyarat() {
         View dialogView;
@@ -49,13 +48,18 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.setCancelable(false);
         alertDialog.setView(dialogView);
 
-        chk_setuju = (CheckBox) dialogView.findViewById(R.id.checkbox_setuju);
-        btn_selanjuynya = (Button) dialogView.findViewById(R.id.btn_selanjutnya);
+        chk_setuju = dialogView.findViewById(R.id.checkbox_setuju);
+        btn_selanjuynya = dialogView.findViewById(R.id.btn_selanjutnya);
 
         btn_selanjuynya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (chk_setuju.isChecked()){
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(SplashScreen.SESSION_SYARAT, true);
+                    editor.commit();
+
+                    alertDialog.dismiss();
 
                 }else{
                     Toast.makeText(MainActivity.this, R.string.tidak_centang, Toast.LENGTH_LONG).show();
