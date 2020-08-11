@@ -1,6 +1,7 @@
 package com.yono.databindingtask.api.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,16 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.yono.databindingtask.OldUsers;
+import com.yono.databindingtask.OldDetailUsers;
 import com.yono.databindingtask.R;
 import com.yono.databindingtask.api.models.Users;
 
@@ -83,9 +86,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.MyViewHolder holder, int position) {
         holder.name.setText(usersListFiltered.get(position).getFirstNameUsers()+ " "+usersListFiltered.get(position).getLastNameUsers());
-        holder.email.setText(usersList.get(position).getEmailUsers());
-        Glide.with(context).load(usersList.get(position).getImageUsers())
+        holder.email.setText(usersListFiltered.get(position).getEmailUsers());
+        Glide.with(context).load(usersListFiltered.get(position).getImageUsers())
                 .apply(RequestOptions.centerCropTransform()).into(holder.imageUsers);
+
     }
 
     @Override
@@ -108,9 +112,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                     usersListFiltered = usersList;
                 } else {
                     List<Users> filteredList = new ArrayList<>();
-                    for (Users movie : usersList) {
-                        if (movie.getFirstNameUsers().toLowerCase().contains(charString.toLowerCase())) {
-                            filteredList.add(movie);
+                    for (Users users : usersList) {
+                        if (users.getFirstNameUsers().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(users);
                         }
                     }
                     usersListFiltered = filteredList;
@@ -132,12 +136,31 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,email;
         ImageView imageUsers;
+        CardView itemListUsers;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txt_name);
             email = itemView.findViewById(R.id.txt_email);
             imageUsers = itemView.findViewById(R.id.profile_image);
+            itemListUsers = itemView.findViewById(R.id.item_users);
+
+
+            itemListUsers.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Intent intent = new Intent();
+                    intent = new Intent(context, OldDetailUsers.class);
+                    intent.putExtra("name_users", usersListFiltered.get(position).getFirstNameUsers()+
+                            " "+
+                            usersListFiltered.get(position).getLastNameUsers());
+                    intent.putExtra("email_users", usersListFiltered.get(position).getEmailUsers());
+                    intent.putExtra("image_users", usersListFiltered.get(position).getImageUsers());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

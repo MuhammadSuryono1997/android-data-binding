@@ -18,6 +18,8 @@
         android:paddingStart="20dp"
         android:drawableEnd="@android:drawable/ic_menu_search"
         android:background="@drawable/edit_text"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
         tools:ignore="MissingConstraints" />
 
     <ProgressBar

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,8 +38,8 @@ public class OldUsers extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private List<UsersResponse> usersResponses;
     private Client client;
+    private Service service;
     ProgressBar pbLoading;
     EditText etSearch;
 
@@ -55,6 +58,10 @@ public class OldUsers extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
+        client = new Client();
+        service = client.Client(Service.class, ApiHelper.BASE_URL_OLD);
+        GetAllUsers();
+
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -72,9 +79,9 @@ public class OldUsers extends AppCompatActivity {
             }
         });
 
+    }
 
-        client = new Client();
-        Service service = client.Client(Service.class, ApiHelper.BASE_URL_OLD);
+    private void GetAllUsers() {
         service.getUsers().enqueue(new Callback<UsersResponse>() {
             @Override
             public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
@@ -83,7 +90,7 @@ public class OldUsers extends AppCompatActivity {
                         String.valueOf(users.size()));
 
                 userAdapter = new UserAdapter();
-                userAdapter.setUsersList(getApplicationContext(), users);
+                userAdapter.setUsersList(OldUsers.this, users);
                 recyclerView.setAdapter(userAdapter);
                 showLoading(false);
 
@@ -94,9 +101,8 @@ public class OldUsers extends AppCompatActivity {
                 Log.e("Error Get data USers", "Gagal get data", t);
             }
         });
-
-
     }
+
 
     public void showLoading(boolean isLoading) {
         if (isLoading) {
