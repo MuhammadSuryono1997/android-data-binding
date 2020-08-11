@@ -21,76 +21,22 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-    CheckBox chk_setuju;
-    Button btn_selanjuynya;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.old_item_users);
+        setContentView(R.layout.activity_main);
 
         sharedPreferences = getSharedPreferences(SplashScreen.my_shared_preferences, Context.MODE_PRIVATE);
 
-        if (!SplashScreen.syarat){
-            ShowSyarat();
-        }
-
-        if (SplashScreen.syarat){
-            PesanSukses();
-        }
-
-
     }
 
-    private void ShowSyarat() {
-        View dialogView;
-        LayoutInflater inflater;
-
-        inflater     = getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.dialog_custome,null);
-
-        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle(R.string.title_sk);
-        alertDialog.setIcon(R.drawable.logo);
-        alertDialog.setCancelable(false);
-        alertDialog.setView(dialogView);
-
-        chk_setuju = dialogView.findViewById(R.id.checkbox_setuju);
-        btn_selanjuynya = dialogView.findViewById(R.id.btn_selanjutnya);
-
-
-        btn_selanjuynya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (chk_setuju.isChecked()){
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean(SplashScreen.SESSION_SYARAT, true);
-                    editor.commit();
-
-                    PesanSukses();
-
-                    alertDialog.dismiss();
-
-                }else{
-                    Toast.makeText(MainActivity.this, R.string.tidak_centang, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-
-
-        alertDialog.show();
-
-    }
-
-    private void PesanSukses() {
-        Toast.makeText(MainActivity.this, R.string.pesan_sukses,Toast.LENGTH_LONG).show();
-    }
 
     public void NumberTwo(View view) {
     }
 
     public void NumberOne(View view) {
+        startActivity(new Intent(MainActivity.this, OldUsers.class));
     }
 
     public void ResetSession(View view) {

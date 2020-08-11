@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DataBindingTask</string>
+    <string name="app_name">Data Binding Task</string>
     <string name="title_sk">Syarat dan Ketentuan</string>
     <string name="pesan_sukses">Syarat dan Ketentuan diizinkan!</string>
     <string name="tidak_centang">Anda harus menyutujui  dengan menekan checklist pada checkbox saya setuju</string>
