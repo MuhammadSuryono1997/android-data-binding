@@ -9,24 +9,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_splash">
 
-    <TextView
-        android:id="@+id/text_syarat"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textSize="25sp"
-        android:lineHeight="30sp"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/archivo_narrow"
-        android:text="@string/syarat_ketentuan"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="5dp" />
+    <ScrollView
+        android:id="@+id/scroll_syarat"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:id="@+id/text_syarat"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="25sp"
+                android:lineHeight="30sp"
+                android:justificationMode="inter_word"
+                android:fontFamily="@font/archivo_narrow"
+                android:text="@string/syarat_ketentuan"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="5dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <CheckBox
         android:id="@+id/checkbox_setuju"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_syarat"
+        app:layout_constraintTop_toBottomOf="@id/scroll_syarat"
         android:layout_marginTop="20dp"
         android:text="Saya Setuju"
         tools:ignore="MissingConstraints" />

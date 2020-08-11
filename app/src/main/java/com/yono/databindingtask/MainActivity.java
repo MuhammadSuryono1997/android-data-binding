@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.text.LineBreaker;
 import android.os.Bundle;
@@ -34,14 +35,20 @@ public class MainActivity extends AppCompatActivity {
             ShowSyarat();
         }
 
+        if (SplashScreen.syarat){
+            PesanSukses();
+        }
+
 
     }
 
     private void ShowSyarat() {
         View dialogView;
         LayoutInflater inflater;
+
         inflater     = getLayoutInflater();
         dialogView = inflater.inflate(R.layout.dialog_custome,null);
+
         final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle(R.string.title_sk);
         alertDialog.setIcon(R.drawable.logo);
@@ -59,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     editor.putBoolean(SplashScreen.SESSION_SYARAT, true);
                     editor.commit();
 
+                    PesanSukses();
+
                     alertDialog.dismiss();
 
                 }else{
@@ -73,9 +82,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void PesanSukses() {
+        Toast.makeText(MainActivity.this, R.string.pesan_sukses,Toast.LENGTH_LONG).show();
+    }
+
     public void NumberTwo(View view) {
     }
 
     public void NumberOne(View view) {
+    }
+
+    public void ResetSession(View view) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(SplashScreen.SESSION_SPLASH, false);
+        editor.putBoolean(SplashScreen.SESSION_SYARAT, false);
+        editor.commit();
+
+        if (editor.commit()){
+            startActivity(new Intent(MainActivity.this, SplashScreen.class));
+            finish();
+        }
     }
 }

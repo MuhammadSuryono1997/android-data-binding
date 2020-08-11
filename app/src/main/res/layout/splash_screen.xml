@@ -30,6 +30,7 @@
         tools:ignore="MissingConstraints" />
 
     <ProgressBar
+        android:id="@+id/progress_splash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/app_name"

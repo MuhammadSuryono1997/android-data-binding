@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,7 @@ public class SplashScreen extends AppCompatActivity {
 
     Handler handler;
     SharedPreferences sharedPreferences;
+    ProgressBar pb;
     public static String SESSION_SPLASH = "splash";
     public static String SESSION_SYARAT = "syarat";
     public static Boolean splash, syarat;
@@ -23,6 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
+        pb = findViewById(R.id.progress_splash);
 
         handler = new Handler();
 

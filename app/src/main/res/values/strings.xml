@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DataBindingTask</string>
     <string name="title_sk">Syarat dan Ketentuan</string>
+    <string name="pesan_sukses">Syarat dan Ketentuan diizinkan!</string>
     <string name="tidak_centang">Anda harus menyutujui  dengan menekan checklist pada checkbox saya setuju</string>
     <string name="syarat_ketentuan"> Dengan mengunduh, memasang, dan/atau menggunakan Aplikasi ini
         , Anda setuju bahwa Anda telah membaca, memahami dan menerima dan menyetujui Ketentuan Penggunaan ini
