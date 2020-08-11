@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void NumberTwo(View view) {
+        startActivity(new Intent(MainActivity.this, NewPosts.class));
     }
 
     public void NumberOne(View view) {

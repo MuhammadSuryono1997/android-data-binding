@@ -26,6 +26,7 @@
         <activity
             android:name=".OldUsers"/>
         <activity android:name=".OldDetailUsers"/>
+        <activity android:name=".NewPosts"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
