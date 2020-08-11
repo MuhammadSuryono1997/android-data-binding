@@ -1,8 +1,16 @@
 package com.yono.databindingtask;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +37,8 @@ public class OldUsers extends AppCompatActivity {
     private UserAdapter userAdapter;
     private List<UsersResponse> usersResponses;
     private Client client;
+    ProgressBar pbLoading;
+    EditText etSearch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,9 +46,31 @@ public class OldUsers extends AppCompatActivity {
         setContentView(R.layout.activity_old_users);
 
         recyclerView = findViewById(R.id.rvUsers);
+        etSearch = findViewById(R.id.etSearch);
+        pbLoading = findViewById(R.id.pbLoading);
+
+        showLoading(true);
+
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                userAdapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                userAdapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                userAdapter.getFilter().filter(editable);
+            }
+        });
 
 
         client = new Client();
@@ -53,6 +85,7 @@ public class OldUsers extends AppCompatActivity {
                 userAdapter = new UserAdapter();
                 userAdapter.setUsersList(getApplicationContext(), users);
                 recyclerView.setAdapter(userAdapter);
+                showLoading(false);
 
             }
 
@@ -63,5 +96,13 @@ public class OldUsers extends AppCompatActivity {
         });
 
 
+    }
+
+    public void showLoading(boolean isLoading) {
+        if (isLoading) {
+            pbLoading.setVisibility(View.VISIBLE);
+        } else {
+            pbLoading.setVisibility(View.GONE);
+        }
     }
 }
