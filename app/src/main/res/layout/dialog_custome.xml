@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     android:paddingStart="40dp"
     android:paddingEnd="40dp"
-    android:paddingTop="50dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_splash">
 
@@ -13,6 +14,7 @@
         android:id="@+id/scroll_syarat"
         android:layout_width="match_parent"
         android:layout_height="400dp"
+        android:scrollbars="none"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout

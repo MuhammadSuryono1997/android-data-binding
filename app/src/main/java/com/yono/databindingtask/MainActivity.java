@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.old_item_users);
 
         sharedPreferences = getSharedPreferences(SplashScreen.my_shared_preferences, Context.MODE_PRIVATE);
 
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         chk_setuju = dialogView.findViewById(R.id.checkbox_setuju);
         btn_selanjuynya = dialogView.findViewById(R.id.btn_selanjutnya);
+
 
         btn_selanjuynya.setOnClickListener(new View.OnClickListener() {
             @Override
