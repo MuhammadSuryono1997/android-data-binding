@@ -6,46 +6,60 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yono.databindingtask.R;
 import com.yono.databindingtask.api.response.PostResponse;
+import com.yono.databindingtask.databinding.NewItemPostsBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     Context context;
-    List<PostResponse> postResponsesList;
+    private ArrayList<PostResponse> postResponseArrayList = new ArrayList<>();
 
-    public void setPostAdapter(Context context, final List<PostResponse> postResponsesList){
+    public void setPostAdapter(Context context, final ArrayList<PostResponse> postResponsesList){
         this.context = context;
-        this.postResponsesList = postResponsesList;
+        this.postResponseArrayList = postResponsesList;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.new_item_posts,parent,false);
+        NewItemPostsBinding binding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()),
+                R.layout.new_item_posts,
+                parent,
+                false
+        );
 
-        return new ViewHolder(view);
+        return new ViewHolder(binding);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
-
+        holder.binData(postResponseArrayList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return postResponseArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        NewItemPostsBinding binding;
+        public ViewHolder(@NonNull NewItemPostsBinding binding) {
+
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void binData(PostResponse postResponse){
+            binding.setPost(postResponse);
         }
     }
 }

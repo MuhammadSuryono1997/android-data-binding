@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_post"
-    app:cardCornerRadius="10dp">
+    >
 
-    <TextView
+    <data>
+        <variable
+            name="post"
+            type="com.yono.databindingtask.api.response.PostResponse" />
+    </data>
+<androidx.cardview.widget.CardView
+    android:id="@+id/item_post"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:fontFamily="@font/allerta"
-        android:lineHeight="20sp"
-        tools:text="@tools:sample/lorem/random"/>
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@{post.titlePosts}"
+            android:fontFamily="@font/allerta"
+            android:textAllCaps="true"
+            android:lineHeight="20sp"
+            tools:text="@tools:sample/full_names"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:justificationMode="inter_word"
+            android:text="@{post.bodyPosts}"
+            android:fontFamily="@font/allerta"
+            android:lineHeight="20sp"
+            tools:text="@tools:sample/full_names"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
+</layout>
