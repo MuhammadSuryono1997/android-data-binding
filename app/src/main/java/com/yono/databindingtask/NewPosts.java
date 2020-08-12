@@ -47,17 +47,17 @@ public class NewPosts extends AppCompatActivity implements LifecycleOwner {
         editTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                postAdapter.getFilter().filter(charSequence);
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                postAdapter.getFilter().filter(charSequence);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                postAdapter.getFilter().filter(editable);
             }
         });
     }
@@ -78,8 +78,10 @@ public class NewPosts extends AppCompatActivity implements LifecycleOwner {
     public void showLoading(boolean isLoading) {
         if (isLoading) {
             progressBar.setVisibility(View.VISIBLE);
+            editTextSearch.setVisibility(View.GONE);
         } else {
             progressBar.setVisibility(View.GONE);
+            editTextSearch.setVisibility(View.VISIBLE);
         }
     }
 }

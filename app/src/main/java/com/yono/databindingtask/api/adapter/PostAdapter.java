@@ -11,12 +11,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yono.databindingtask.R;
-import com.yono.databindingtask.api.models.Users;
 import com.yono.databindingtask.api.response.PostResponse;
 import com.yono.databindingtask.databinding.NewItemPostsBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> implements Filterable {
     Context context;
