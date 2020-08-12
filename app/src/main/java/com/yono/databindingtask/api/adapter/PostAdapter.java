@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yono.databindingtask.NewPosts;
 import com.yono.databindingtask.R;
 import com.yono.databindingtask.api.response.PostResponse;
 import com.yono.databindingtask.databinding.NewItemPostsBinding;
@@ -38,8 +37,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> im
                 parent,
                 false
         );
-
-
         return new ViewHolder(binding);
 
     }

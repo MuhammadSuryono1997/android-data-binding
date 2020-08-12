@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.yono.databindingtask.api.adapter.PostAdapter;
 import com.yono.databindingtask.api.models.MainViewModelsPosts;
 import com.yono.databindingtask.api.response.PostResponse;
+import com.yono.databindingtask.databinding.NewItemPostsBinding;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class NewPosts extends AppCompatActivity implements LifecycleOwner {
     MainViewModelsPosts viewModelsPosts;
     RecyclerView recyclerView;
     PostAdapter postAdapter;
+    NewItemPostsBinding newItemPostsBinding;
 
     ProgressBar progressBar;
     EditText editTextSearch;

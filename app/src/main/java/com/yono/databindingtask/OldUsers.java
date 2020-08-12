@@ -65,7 +65,6 @@ public class OldUsers extends AppCompatActivity {
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                userAdapter.getFilter().filter(charSequence);
             }
 
             @Override
@@ -75,7 +74,6 @@ public class OldUsers extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                userAdapter.getFilter().filter(editable);
             }
         });
 
