@@ -9,6 +9,10 @@
         <variable
             name="post"
             type="com.yono.databindingtask.api.response.PostResponse" />
+        
+        <variable
+            name="presenterPost"
+            type="com.yono.databindingtask.NewPosts" />
     </data>
 <androidx.cardview.widget.CardView
     android:id="@+id/item_post"
@@ -18,7 +22,8 @@
     android:layout_marginBottom="5dp"
     android:layout_marginEnd="5dp"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:onClick="@{() -> presenterPost.showData(post)}">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
